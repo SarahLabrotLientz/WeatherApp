@@ -93,3 +93,11 @@ function displayToday(data,city) {
 
       // display date/time
     var time = getDate(data.current.dt);
+
+    // display city name and image
+    var imageEl = document.createElement("img");
+    imageEl.setAttribute("src",weatherIconUrl);
+    imageEl.setAttribute("alt",weatherAlt);
+    
+    $('#city_name').html(city + " on " + time + " ");
+    $('#city_name').append(imageEl);
