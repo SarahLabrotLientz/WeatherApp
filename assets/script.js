@@ -72,3 +72,21 @@ function displayToday(data,city) {
     var temperature = data.current.temp;
     var humidity = data.current.humidity;
     var wind = data.current.wind_speed;
+
+      // change styling 
+      var UV = data.current.uvi;
+      var styledUV = ''; // string with styling for different codes
+  
+      if (UV < 3) {
+          styledUV = '<span style=\'background-color: green; padding: 5px;\'>' + UV;
+      }
+      else if (UV > 3 && UV < 6) {
+          styledUV = '<span style=\'background-color: yellow; padding: 5px;\'>' + UV;
+      }
+      else {
+          styledUV = '<span style=\'background-color: red; padding: 5px;\'>' + UV;
+      }
+  
+      var weatherIconUrl = 'https://openweathermap.org/img/wn/' +  data.current.weather[0].icon + '.png';
+  
+      var weatherAlt = data.current.weather[0].description;
