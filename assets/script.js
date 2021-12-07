@@ -132,3 +132,50 @@ function displayForecast(data) {
         // create card body
         var cardBody = document.createElement("div");
         cardBody.setAttribute("class","card-body p-2");
+
+         // build src link for image with alt descr
+         var weatherIconUrl = 'https://openweathermap.org/img/wn/' +  data.daily[i].weather[0].icon + '.png'; 
+         var weatherIconDescr = data.daily[0].weather[0].description;
+         var weatherIcon = document.createElement("img");
+         weatherIcon.setAttribute("src",weatherIconUrl);
+         weatherIcon.setAttribute("alt",weatherIcon);
+         cardBody.append(weatherIcon);
+ 
+         // create list for other attributes, add to cardBody
+         var forecastList = document.createElement("ul");
+         forecastList.innerHTML = 
+             "<li>Temp: " + data.daily[i].temp.day + "&deg;F</li>" +
+             "<li>Humidity: " + data.daily[i].humidity + "%</li>";
+         cardBody.append(forecastList);
+ 
+         // build card, add to page
+         cardContainer.append(cardHeader);
+         cardContainer.append(cardBody);
+         $('#city_forecast').append(cardContainer);
+     }
+ }
+ // stores past searches in localstorage
+function addPastSearch(city) {
+    // check localstorage first, if not there then create
+    if (!localStorage.getItem("pastSearches")) {
+        // push newScore object into array, then
+        var pastSearches = [];    
+     
+        pastSearches.push(city);
+        // write it to local storage
+        localStorage.setItem("pastSearches",JSON.stringify(pastSearches));
+    }
+    // if task list already exists in localstorage, see if this specific hour is in there. if it is, modify it's current contents. if it's not, add it and then save all data back into local storage
+    else {
+        // extract data from localstorage
+        var pastSearches = JSON.parse(localStorage.getItem("pastSearches"));
+        //only add if it's not already there
+        if (!alreadySaved(city,pastSearches)) {
+             // add new city to list
+             pastSearches.push(city);
+             // re-insert data into local storage
+             localStorage.setItem("pastSearches",JSON.stringify(pastSearches));
+        }
+    }
+    displayPastSearches();
+ }
