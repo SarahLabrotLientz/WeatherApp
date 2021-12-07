@@ -101,3 +101,12 @@ function displayToday(data,city) {
     
     $('#city_name').html(city + " on " + time + " ");
     $('#city_name').append(imageEl);
+
+    // display list of current conditions extracted from API data
+    $('#city_content').html('<ul>' +
+    '<li>Temperature: ' + temperature + ' degrees</li>' +
+    '<li>Humidity: ' + humidity + '%</li>' +
+    '<li>Wind speed: ' + wind + ' MPH</li>' +
+    '<li>UV Index: ' + styledUV + '</span></li>' +
+    '</ul>');
+}
