@@ -56,4 +56,13 @@ function showResults(city) {
          $('#city_name').html("Error!");
          $('#city_content').html("Something went wrong. Please try another city.");
      }
-     return response.json();
+     return response.json();     
+    
+    })
+     // Sending weather data to page
+     .then(function(data) { 
+         displayToday(data,city); // display current weather info to page
+         displayForecast(data,city); // display forecase to page
+         addPastSearch(city); // add to list of stored searches
+     });
+}
