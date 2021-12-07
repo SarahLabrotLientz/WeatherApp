@@ -110,3 +110,25 @@ function displayToday(data,city) {
     '<li>UV Index: ' + styledUV + '</span></li>' +
     '</ul>');
 }
+
+// display 5 day forecast for weather at location
+function displayForecast(data) {
+    // reset entire container so data doesn't build on itself
+    $('#city_forecast').html('');
+    $('#forecast_section').attr("style","display: all");
+
+    // display 5 day forecast using API data
+    for (i = 1; i <= 5; i++) { 
+        // create containers, then add content below
+        var cardContainer = document.createElement("div");
+        cardContainer.setAttribute("class","card col-md-2 p-0 mx-2");
+
+        var cardHeader = document.createElement("div");
+        cardHeader.setAttribute("class","card-header p-1");
+
+        // add date to header
+        cardHeader.innerHTML = "<h5>" + getDate(data.daily[i].dt) + "</h5>";
+
+        // create card body
+        var cardBody = document.createElement("div");
+        cardBody.setAttribute("class","card-body p-2");
