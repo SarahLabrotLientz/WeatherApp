@@ -90,3 +90,6 @@ function displayToday(data,city) {
       var weatherIconUrl = 'https://openweathermap.org/img/wn/' +  data.current.weather[0].icon + '.png';
   
       var weatherAlt = data.current.weather[0].description;
+
+      // display date/time
+    var time = getDate(data.current.dt);
