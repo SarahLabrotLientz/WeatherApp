@@ -208,3 +208,27 @@ function displayPastSearches() {
         $('#past_searches').html("None yet!");
     }
 }
+
+// clears search history
+function clearPastSearches() {
+    localStorage.removeItem("pastSearches");
+    location.reload();
+}
+
+function getDate(timestamp) {
+    return moment.unix(timestamp).format('MM/DD/YY');
+}
+
+// takes city and compares it to each item in array, if present returns true
+function alreadySaved(city,data) {
+    var present = false;
+    city = city.toUpperCase();
+
+    for (i = 0; i < data.length; i++) {
+        if (data[i].toUpperCase() === city) {
+            present = true;
+        }
+    }
+
+    return present;
+}
