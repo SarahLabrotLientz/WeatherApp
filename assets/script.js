@@ -179,3 +179,32 @@ function addPastSearch(city) {
     }
     displayPastSearches();
  }
+
+// grabs past searches, uses displayData to write to page
+function displayPastSearches() {
+    $('#past_searches').html("");
+
+    // only do something if local storage objects exist, otherwise do nothing (ie leave blank)
+    if (localStorage.getItem("pastSearches")) {
+        // extract data from localstorage
+        var pastSearches = JSON.parse(localStorage.getItem("pastSearches"));
+
+        for (i = 0; i < pastSearches.length; i++) {
+            // build list item, add to list
+            var listItem = document.createElement("li");
+            listItem.setAttribute("id","search"+i);
+            listItem.setAttribute("data-descr",pastSearches[i]);
+            listItem.innerHTML = pastSearches[i]; 
+            $('#past_searches').append(listItem);
+
+            // handle when one link is clicked on
+            listItem.addEventListener("click", function() {
+                showResults(this.getAttribute("data-descr"));
+            });
+        }
+    }
+    // set default value
+    else {
+        $('#past_searches').html("None yet!");
+    }
+}
