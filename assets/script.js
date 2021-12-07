@@ -65,4 +65,10 @@ function showResults(city) {
          displayForecast(data,city); // display forecase to page
          addPastSearch(city); // add to list of stored searches
      });
-}
+
+}// display today's current weather for location
+function displayToday(data,city) {
+    // find data points for the following
+    var temperature = data.current.temp;
+    var humidity = data.current.humidity;
+    var wind = data.current.wind_speed;
