@@ -42,3 +42,18 @@ function showResults(city) {
             }
             return response.json();
         })    
+  // getting all weather data with coordinates for second api
+  .then(function (data) {
+    cityLat = data[0].lat;
+    cityLong = data[0].lon;
+
+    forecastRequest = 'https://api.openweathermap.org/data/2.5/onecall?lat=' + cityLat + '&lon=' + cityLong + '&exclude=minutely,hourly,alerts&units=imperial&appid=' + apiKey;
+ 
+    return fetch(forecastRequest, {mode: 'cors'});
+ })
+ .then(function(response) {
+     if(response.status != 200) {
+         $('#city_name').html("Error!");
+         $('#city_content').html("Something went wrong. Please try another city.");
+     }
+     return response.json();
