@@ -1,5 +1,5 @@
 # WeatherApp
-A weather dashboard providing current and future forecasts for cities around the world. 
+A weather app providing current and future forecasts for cities around the world. 
 
 
 HOW IT WORKS:
