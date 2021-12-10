@@ -1,4 +1,4 @@
-//Dates
+//use moments for days
 var startDate = moment().format('M/DD/YYYY');  // Current Date
 var day1 = moment().add(1, 'days').format('M/DD/YYYY');
 var day2 = moment().add(2, 'days').format('M/DD/YYYY');
@@ -9,7 +9,7 @@ var day5 = moment().add(5, 'days').format('M/DD/YYYY');
 $(document).ready(function() {
 console.log("ready!");
 
-// On-click when user enters city 
+// user enters a city
 $("#basic-text1").on("click", function(event) {
   event.preventDefault();
   var cityInput = $("#input").val(); //saves the city that has been entered
@@ -20,7 +20,7 @@ $("#basic-text1").on("click", function(event) {
   localStorage.setItem("allCities", JSON.stringify(allCities)); //saves city input to local storage 
 
   showWeather(cityInput); 
-}); // End of city button on-click
+}); // End of city button onclick
 
 function showWeather(cityInput) {
 
@@ -33,7 +33,7 @@ function showWeather(cityInput) {
   $("#day4").empty();
   $("#day5").empty();
 
-  // QueryURL to Open Weather App for One Day Using Personal API KEY FOR SARAH.LIENTZ@gmail.com
+  // API KEY FOR SARAH.LIENTZ@gmail.com
   var oneDay ="https://api.openweathermap.org/data/2.5/weather?q=" 
   + cityInput + "&units=imperial" + "&APPID=ddd07af3f68929edbfbdc2e6fbe8b772";
   console.log("oneDay", oneDay);  
@@ -97,13 +97,13 @@ function showWeather(cityInput) {
            $("#uvIndex").addClass("purple");
        };
 
-      // HEADER
+      // Top
       $("#fiveDay").append(
         "<div class='col-md-12'>"
        + "<h2 id='fiveDay'>" + "5-Day Forecast:" + "</h2>" 
       ); // End of append 
 
-       // DAY ONE DETAILS
+       // First day
       $("#day1").append(
        "<div class='fiveDayCard card col s12 m6'>"
        +  "<div class='card-body'>"
@@ -114,7 +114,7 @@ function showWeather(cityInput) {
        + "</div>" 
       ); // End of append 
 
-      //DAY TWO DETAILS
+      //Second day
       $("#day2").append(
         "<div class='fiveDayCard card col s12 m6'>"
         +  "<div class='card-body'>"
@@ -125,7 +125,7 @@ function showWeather(cityInput) {
         + "</div>" 
       ); // End of append 
 
-      //DAY THREE DETAILS
+      //Third day
       $("#day3").append(
         "<div class='fiveDayCard card col s12 m6'>"
         +  "<div class='card-body'>"
