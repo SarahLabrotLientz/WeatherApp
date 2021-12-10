@@ -61,7 +61,7 @@ function showWeather(cityInput) {
 
   // QueryURL to Open Weather App 
   var fiveDay = "https://api.openweathermap.org/data/2.5/onecall?" 
-  + "lat=" + lat + "&lon=" + lon + "&units=imperial" + "&appid=45e45c0bb2ef540df33fa21a29aafa8a";  
+  + "lat=" + lat + "&lon=" + lon + "&units=imperial" + "&APPID=ddd07af3f68929edbfbdc2e6fbe8b772";  
     console.log("fiveDay", fiveDay);
 
    //AJAX call for Five Day & UV
