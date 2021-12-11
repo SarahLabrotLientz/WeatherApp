@@ -6,8 +6,33 @@ var day3 = moment().add(3, 'days').format('M/DD/YYYY');
 var day4 = moment().add(4, 'days').format('M/DD/YYYY');
 var day5 = moment().add(5, 'days').format('M/DD/YYYY');
 
-$(document).ready(function() {
-console.log("ready!");
+// Referencing other code from group project to try to use fetch 
+// onclick when user selects anime character
+// $("#Selected").on("click", function(event) {
+//   event.preventDefault();
+//   EventTarget.addEventListener()
+//   var AnimeSelected = $("#Selected").val() //save the anime character selected
+//   var allAnime= []; //Array to hold all selected anime characters
+// function loadSelectedAnime(name) {
+//   var animeURL = "https://anime-facts-rest-api.herokuapp.com/api/v1/" + name;
+//   fetch(animeURL)
+//       .then(response => response.json())
+//       .then(info => {
+//           console.log(info)
+//           var newimage = document.createElement("img");
+//           newimage.setAttribute("src", info.img);
+
+//   allAnime= JSON.parse(localStorage.getItem("allAnime")) || []; //Get Anime Characters
+//   allAnime.push(AnimeSelected); //pushes new anime selected to array
+//   localStorage.setItem("allAnime", JSON.stringify(allAnime)); //save anime selected to local storage
+//           document.querySelector("body").appendChild(newimage);
+
+//           for (var i=0; i<info.data.length; i++){
+//               var newCard = document.createElement("h2");
+//               newCard.textContent = info.data[i].fact;
+//               document.querySelector("body").appendChild(newCard);
+//               console.log(info.data[i].fact);
+//           }
 
 // user enters a city
 $("#basic-text1").on("click", function(event) {
@@ -38,7 +63,16 @@ function showWeather(cityInput) {
   + cityInput + "&units=imperial" + "&APPID=ddd07af3f68929edbfbdc2e6fbe8b772";
   console.log("oneDay", oneDay);  
 
-  //AJAX call for One Day
+  //referencing more code from group project
+// fetch("https://anime-facts-rest-api.herokuapp.com/api/v1/")
+//     .then(response => response.json())
+//     .then(info => { 
+//         console.log(info)
+//         for (i=0; i<info.data.length; i++){
+//             var newCard = document.createElement("card");
+//             newCard.textContent = info.data[i].anime_name;
+//             document.querySelector("body").appendChild(newCard);
+  // call for One Day
   $.ajax({
       url: oneDay,
       method: "GET",
@@ -114,6 +148,13 @@ function showWeather(cityInput) {
        + "</div>" 
       ); // End of append 
 
+      // referencing code from group project
+      // var newImg = document.createElement("img");
+      // //     newImg.setAttribute("src", anime_img);
+      // //     selectElement.appendChild(newTitle);
+      // //     selectElement.appendChild(newImg);
+      // // }
+      
       //Second day
       $("#day2").append(
         "<div class='fiveDayCard card col s12 m6'>"
@@ -191,4 +232,4 @@ $("#cityButtons").on("click", ".list-group-item", function(event) {
   showWeather(cityInput); 
 }) // end of city buttons on click
 
-}); // end of document ready function
+ 
